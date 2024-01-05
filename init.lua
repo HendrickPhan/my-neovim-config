@@ -21,10 +21,12 @@ vim.opt.rtp:prepend(lazypath)
 require "plugins"
 
 vim.api.nvim_create_user_command("Cppath", function()
-    local path = vim.fn.expand("%:p")
+    local path = vim.fn.expand("%:p:h")
     vim.fn.setreg("+", path)
     vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
+
+
 
 -- this one for synctax hightlight --
 require'nvim-treesitter.configs'.setup {
